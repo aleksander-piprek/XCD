@@ -1,8 +1,8 @@
-../Core/Src/main.c:69:6:lightUpDigit	16	static
-../Core/Src/main.c:81:6:turnOnSegment	8	static
-../Core/Src/main.c:88:6:turnOffSegment	8	static
-../Core/Src/main.c:101:5:main	8	static
-../Core/Src/main.c:171:6:SystemClock_Config	88	static
-../Core/Src/main.c:207:13:MX_USART2_UART_Init	8	static
-../Core/Src/main.c:242:13:MX_GPIO_Init	48	static
-../Core/Src/main.c:285:6:Error_Handler	8	static,ignoring_inline_asm
+../Core/Src/main.c:81:6:lightUpDigit	16	static
+../Core/Src/main.c:91:6:turnOnSegment	16	static
+../Core/Src/main.c:99:6:turnOffSegment	16	static
+../Core/Src/main.c:113:5:main	8	static
+../Core/Src/main.c:183:6:SystemClock_Config	88	static
+../Core/Src/main.c:219:13:MX_USART2_UART_Init	8	static
+../Core/Src/main.c:254:13:MX_GPIO_Init	48	static
+../Core/Src/main.c:300:6:Error_Handler	8	static,ignoring_inline_asm

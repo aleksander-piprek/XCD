@@ -36,9 +36,11 @@
 #define DIGIT2_PIN GPIO_PIN_5 		// Example: GPIOB Pin 1
 #define DIGIT3_PIN GPIO_PIN_1		// Example: GPIOB Pin 6
 #define DIGIT4_PIN GPIO_PIN_6 		// Example: GPIOB Pin 7
+#define DIGIT_PORT GPIOB       		// Common anode GPIO port
 
-#define DIGIT_PORT GPIOB
-#define SEGMENT_PORT GPIOA
+#define DP GPIO_PIN_0 	// Example: GPIOA Pin 5
+
+#define SEGMENT_PORT GPIOA       	// Segment GPIO port
 
 /* USER CODE END PD */
 
@@ -51,19 +53,6 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
-const uint16_t segmentPin[] =
-{
-	GPIO_PIN_0,
-	GPIO_PIN_1,
-	GPIO_PIN_4,
-	GPIO_PIN_5,
-	GPIO_PIN_6,
-	GPIO_PIN_7,
-	GPIO_PIN_9,
-	GPIO_PIN_10
-
-};
 
 /* USER CODE END PV */
 
@@ -90,18 +79,16 @@ void lightUpDigit(GPIO_TypeDef *digitPort, uint16_t digitPin)
 
 void turnOnSegment()
 {
-	for(uint8_t i = 0; i < 8; i++)
+	for(uint8_t i; i < 8; i++)
 	{
-		HAL_GPIO_WritePin(SEGMENT_PORT, segmentPin[i], GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(SEGMENT_PORT, SEGMENT_A_PIN, GPIO_PIN_RESET);
 	}
+
 }
 
 void turnOffSegment()
 {
-	for(uint8_t i = 0; i < 8; i++)
-	{
-	    HAL_GPIO_WritePin(SEGMENT_PORT, segmentPin[i], GPIO_PIN_SET);
-	}
+    HAL_GPIO_WritePin(SEGMENT_PORT, SEGMENT_A_PIN, GPIO_PIN_SET);
 }
 
 /* USER CODE END 0 */
@@ -263,16 +250,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA0 PA1 PA4 PA5
-                           PA6 PA7 PA9 PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_9|GPIO_PIN_10;
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

@@ -1,10 +1,10 @@
-22:51:57 **** Incremental Build of configuration Debug for project src1 ****
+23:13:17 **** Incremental Build of configuration Debug for project src1 ****
 make -j24 all 
 arm-none-eabi-size  src1.elf 
    text	   data	    bss	    dec	    hex	filename
-   7772	     12	   1708	   9492	   2514	src1.elf
+   7852	     12	   1708	   9572	   2564	src1.elf
 Finished building: default.size.stdout
  
 
-22:51:57 Build Finished. 0 errors, 0 warnings. (took 191ms)
+23:13:17 Build Finished. 0 errors, 0 warnings. (took 191ms)
 

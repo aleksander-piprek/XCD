@@ -90,7 +90,7 @@ void lightUpDigit(GPIO_TypeDef *digitPort, uint16_t digitPin)
 
 void turnOnSegment()
 {
-	for(uint8_t i = 0; i < 8; i++)
+	for(uint8_t i; i < 7; i++)
 	{
 		HAL_GPIO_WritePin(SEGMENT_PORT, segmentPin[i], GPIO_PIN_RESET);
 	}
@@ -98,7 +98,7 @@ void turnOnSegment()
 
 void turnOffSegment()
 {
-	for(uint8_t i = 0; i < 8; i++)
+	for(uint8_t i; i < 7; i++)
 	{
 	    HAL_GPIO_WritePin(SEGMENT_PORT, segmentPin[i], GPIO_PIN_SET);
 	}
